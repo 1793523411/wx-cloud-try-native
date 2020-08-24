@@ -1,0 +1,24 @@
+<!--pages/index/xiao/xiao.wxml-->
+<!-- pages/index/qq/qq.wxml -->
+<van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;font-size: 18px;">
+    笑话大全
+</van-divider>
+<block wx:for="{{result}}" wx:key="*this">
+    <!-- <van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;font-size: 18px;">这是您的结果，😘亲</van-divider> -->
+    <view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title"></h4>
+            <view class="weui-media-box__desc my">{{item.content}}</view>
+        </view>
+    </view>
+   <van-divider  customStyle="color: #7ef845;border-color: #7ef845;font-size: 18px;"></van-divider>
+</block>
+<view class="page" data-weui-theme="{{theme}}">
+    <view class="fadeIn {{hideLoading ? 'fadeOut' : ''}}" wx:if="{{loading}}">
+        <view class="weui-mask_transparent"></view>
+        <view class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <view class="weui-toast__content">数据加载中</view>
+        </view>
+    </view>
+</view>

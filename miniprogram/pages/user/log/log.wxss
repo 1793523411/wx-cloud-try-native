@@ -1,0 +1,15 @@
+/* pages/user/log/log.wxss */
+   .blank {
+    display: block;
+    margin: 0 auto;
+    margin-top: 300rpx;
+    width: 550rpx;
+    height: 500rpx;
+    background-color: rgba(255, 255, 255, 0.781);
+    color: #ccc;
+    border-radius: 10%;
+    text-align: center;
+  }
+  .blank2 {
+    margin-top: 10rpx;
+  }

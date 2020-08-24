@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-card": "/@vant/weapp/card",
+    "van-cell": "@vant/weapp/cell",
+    "van-cell-group": "@vant/weapp/cell-group",
+    "van-divider": "@vant/weapp/divider"
+  }
+}

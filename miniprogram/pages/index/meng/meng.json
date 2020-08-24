@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-collapse": "@vant/weapp/collapse",
+    "van-collapse-item": "@vant/weapp/collapse-item",
+    "van-divider": "@vant/weapp//divider"
+  }
+}

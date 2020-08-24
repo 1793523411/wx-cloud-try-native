@@ -1,0 +1,5 @@
+/* pages/index/peidui/peidui.wxss */
+.my{
+    display: block;
+    color: rgb(126, 122, 122);
+}

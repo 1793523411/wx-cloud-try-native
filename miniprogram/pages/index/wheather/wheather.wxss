@@ -1,0 +1,241 @@
+/* pages/index/wheather/wheather.wxss */
+.aligncenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-size: 12px; */
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  /* background-color: #ff55; */
+}
+page {
+  background: #2d2f3b;
+  height: 100%;
+}
+view {
+  box-sizing: border-box;
+  font-family: "Microsoft YaHei";
+}
+.weather-card {
+  width: 100%;
+  height: 100%;
+  background: rgb(24, 243, 79);
+  box-shadow: 0 0 15rpx rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+.today {
+  width: 100%;
+  height: 60%;
+  position: relative;
+  text-align: center;
+  background-color: #00ff;
+}
+/* .background-default {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 59, 57, 1) 0%,
+    rgba(255, 139, 45, 1) 100%
+  );
+} */
+.background-duoyun {
+  background-image: url("http://n.sinaimg.cn/translate/667/w427h240/20180324/EPcv-fysnevm3758383.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.background-xiaoyu {
+  background-image: url("http://s9.rr.itc.cn/r/wapChange/20172_18_9/a3yp1r5776702966542.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.background-zhongyu {
+  background-image: url("http://hiphotos.baidu.com/feed/pic/item/f2deb48f8c5494ee201e80ae27f5e0fe99257e4d.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.background-leizhenyu {
+  background-image: url("http://n.sinaimg.cn/translate/667/w427h240/20180324/EPcv-fysnevm3758383.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.background-yu {
+  background-image: url("http://n.sinaimg.cn/translate/20171016/OHSY-fymvuyt0908446.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.background-dayu {
+  background-image: url("http://hiphotos.baidu.com/feed/pic/item/7dd98d1001e93901a97652eb71ec54e737d196eb.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.background-xue {
+  background-image: url("http://5b0988e595225.cdn.sohucs.com/images/20171216/34260f66d0394c749d25e41bcf8acb1f.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.background-qing {
+  background-image: url("http://dpic.tiankong.com/1v/gp/QJ8826519342.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.background-qing2 {
+  background-image: url("https://www.diyimei.net/upload/2018/1543151791832714.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.background-qing3 {
+  background-image: url("http://img.qqzhi.com/uploads/2018-12-02/022634152.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.background-default {
+  background-image: url("http://n.sinaimg.cn/translate/20171016/OHSY-fymvuyt0908446.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+
+
+
+
+/* .background-dayu {
+  background-image: url("http://hiphotos.baidu.com/feed/pic/item/7dd98d1001e93901a97652eb71ec54e737d196eb.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.background-xiaoyu {
+  background-image: url("http://s9.rr.itc.cn/r/wapChange/20172_18_9/a3yp1r5776702966542.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.background-leizhenyu {
+  background-image: url("http://img1.imgtn.bdimg.com/it/u=1606121996,1789361334&fm=214&gp=0.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+} */
+.background-qing {
+  background-image: url("http://5b0988e595225.cdn.sohucs.com/images/20171216/34260f66d0394c749d25e41bcf8acb1f.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.other {
+  width: 100%;
+  height: 40%;
+  background: #fff;
+}
+.today .top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 5px;
+}
+.today .top .range {
+  font-size: 35rpx;
+  color: rgb(50, 111, 172);
+  float: left;
+}
+.today .top .refresh {
+  float: right;
+  line-height: 27px;
+}
+.today .top .refresh image {
+  width: 50rpx;
+  height: 50rpx;
+  vertical-align: middle;
+}
+
+.today .middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(50, 111, 172);
+}
+.today .middle image {
+  width: 250rpx;
+  height: 250rpx;
+}
+
+.today .bottom {
+  width: 100%;
+  position: absolute;
+  color: rgb(50, 111, 172);
+  bottom: 0;
+  left: 0;
+  padding: 0 5px;
+}
+.today .bottom .temp {
+  font-size: 125rpx;
+  float: left;
+  text-align: left;
+}
+.today .bottom .city-day {
+  float: right;
+  text-align: right;
+}
+.today .bottom .city-day .day {
+  font-size: 70rpx;
+}
+.today .bottom .city-day .city {
+  font-size: 35rpx;
+}
+.other scroll-view {
+  height: 100%;
+  width: 100%;
+  white-space: nowrap;
+}
+.other scroll-view .scroll-view-item {
+  width: 33.33%;
+  height: 100%;
+  display: inline-block;
+  border-right: 2rpx solid #edebe9;
+  color: #bbb;
+}
+
+.other scroll-view .scroll-view-item .top {
+  width: 100%;
+  height: 25%;
+  font-size: 38rpx;
+}
+.other scroll-view .scroll-view-item .middle {
+  width: 100%;
+  height: 40%;
+}
+.other scroll-view .scroll-view-item .middle image {
+  width: 120rpx;
+  height: 120rpx;
+  opacity: 0.5;
+}
+.other scroll-view .scroll-view-item .futuretype-text {
+  text-align: center;
+  height: 10%;
+}
+.other scroll-view .scroll-view-item .bottom {
+  width: 100%;
+  height: 25%;
+  font-size: 44rpx;
+}
+.my {
+  background-color: #265485;
+  width: 100%;
+  height: 300px;
+}
+.top_my {
+  display: block;
+  margin: 0 auto;
+  font-size: 11px;
+  color: rgb(50, 111, 172);
+}
+.hidden {
+  display: none;
+}
+.my_life {
+  font-size: 10;
+  color: #481564;
+}

@@ -1,0 +1,9 @@
+{
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "写下想做的事，(*╹▽╹*)",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "van-notice-bar": "@vant/weapp/notice-bar"
+  }
+}

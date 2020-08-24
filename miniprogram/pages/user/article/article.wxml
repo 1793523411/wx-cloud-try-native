@@ -1,0 +1,50 @@
+<!-- pages/user/article/article.wxml -->
+<block wx:if="{{article.length!==0}}">
+<block wx:for="{{article}}" wx:key="*this" wx:for-index="idx">
+    <block wx:if="{{article[idx].month!==article[idx-1].month}}">
+        <van-divider contentPosition="center" customStyle="color: #f3c45f;border-color: #f3c45f;font-size: 18px;">
+            {{item.year}}年{{item.month}}月
+        </van-divider>
+        <!-- <view class="divLine">
+                    {{item.year}}-{{item.month}}-{{item.day}}
+                    </view> -->
+    </block>
+    <block wx:else></block>
+    <navigator url="/pages/user/article-d/article-d?id={{item._id}}">
+        <view class="page__bd">
+            <view class="weui-panel weui-panel_access">
+                <view class="weui-panel__bd">
+                    <view class="weui-media-box weui-media-box_text">
+                        <h4 class="weui-media-box__title">{{item.title}}</h4>
+                        <view class="weui-media-box__desc">{{item.year}}-{{item.month}}-{{item.day}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </navigator>
+</block>
+<view class="page" data-weui-theme="{{theme}}">
+    <view class="fadeIn {{hideLoading ? 'fadeOut' : ''}}" wx:if="{{loading}}">
+        <view class="weui-mask_transparent"></view>
+        <view class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <view class="weui-toast__content">数据加载中</view>
+        </view>
+    </view>
+</view>
+</block>
+<block wx:else>
+<view class="blank">
+  
+  <text>这里似乎什么都没有耶~~~，不过你可以添加一些</text>
+  <view class="blank2">
+  <text>
+  O(∩_∩)O
+  </text>
+  </view>
+  <view class="blank2">
+  <text> 填补我吧ヾ(=･ω･=)o</text>
+  </view>
+ 
+</view>
+</block>

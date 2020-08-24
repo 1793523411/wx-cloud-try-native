@@ -1,0 +1,22 @@
+<import src="../../wxParse/wxParse.wxml" />
+<!-- <view class="page__bd"> -->
+<!-- <view class="weui-article">
+    <view class="weui-article__h1">大标题</view>
+</view> -->
+<!-- </view> -->
+<!-- <view class="weui-article__section">
+<view class="weui-article__h2">章标题</view>
+</view> -->
+<view class="page" data-weui-theme="{{theme}}">
+    <view class="page__bd">
+        <view class="weui-article">
+        <view class="weui-article__h1"><text >{{articled.title}}</text></view>
+            <view class="weui-article__section">
+            <view class="weui-article__h3"><text>{{articled.year}}-{{articled.month}}-{{articled.day}}</text></view>
+                <view class="weui-article__p">
+                    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

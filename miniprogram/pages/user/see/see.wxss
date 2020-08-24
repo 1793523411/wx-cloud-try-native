@@ -1,0 +1,4 @@
+/* pages/user/see/see.wxss */
+.img {
+    border-radius: 50%;
+}

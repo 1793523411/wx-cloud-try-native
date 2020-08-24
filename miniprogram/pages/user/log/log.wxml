@@ -1,0 +1,65 @@
+<!-- pages/user/log/log.wxml -->
+<block wx:if="{{todo.length!==0}}">
+<view class="page__bd">
+    <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+            <view class="weui-cells" wx:for="{{todo}}" wx:for-index="idx">
+                <block wx:if="{{todo[idx].day!==todo[idx-1].day}}">
+                    <van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;font-size: 18px;">
+                        {{item.year}}-{{item.month}}-{{item.day}}
+                    </van-divider>
+                    <!-- <view class="divLine">
+                    {{item.year}}-{{item.month}}-{{item.day}}
+                    </view> -->
+                </block>
+                <block wx:else></block>
+                <block wx:if="{{item.completed}}">
+                    <a class="weui-cell weui-cell_active weui-cell_access weui-cell_example">
+                        <icon type="success_no_circle" size="20" />
+                        <view class="weui-cell__bd weui-cell_primary">
+                            <view>{{item.name}}</view>
+                            <!-- <view>{{todo[idx].day}}</view>
+                            <view>{{todo[idx+1].day}}</view> -->
+                        </view>
+                    </a>
+                </block>
+                <block wx:else>
+                    <a class="weui-cell weui-cell_active weui-cell_access weui-cell_example">
+                        <icon type="warn" size="20" />
+                        <view class="weui-cell__bd weui-cell_primary">
+                            <view>{{item.name}}</view>
+                            <!-- <view>{{todo[idx].day}}</view>
+                            <view>{{todo[idx+1].day}}</view> -->
+                            <!-- <view>{{todo[1].name}}</view> -->
+                        </view>
+                    </a>
+                </block>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="page" data-weui-theme="{{theme}}">
+    <view class="fadeIn {{hideLoading ? 'fadeOut' : ''}}" wx:if="{{loading}}">
+        <view class="weui-mask_transparent"></view>
+        <view class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <view class="weui-toast__content">数据加载中</view>
+        </view>
+    </view>
+</view>
+</block>
+<block wx:else>
+<view class="blank">
+  
+  <text>这里似乎什么都没有耶~~~，不过你可以添加一些</text>
+  <view class="blank2">
+  <text>
+  O(∩_∩)O
+  </text>
+  </view>
+  <view class="blank2">
+  <text> 填补我吧ヾ(=･ω･=)o</text>
+  </view>
+ 
+</view>
+</block>

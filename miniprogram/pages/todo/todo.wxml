@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="header">
+    <image src="../../images/plus.png" bindtap="addTodoHandle"></image>
+    <input type="text" placeholder="Anything here..." value="{{ input }}" bindinput="inputChangeHandle" bindconfirm="addTodoHandle"/>
+  </view>
+  <block wx:if="{{ todos.length }}">
+    <view class="todos">
+      <view class="item{{ item.completed ? ' completed' : '' }}" wx:for="{{ todos }}" wx:key="*this" bindtap="toggleTodoHandle" data-index="{{ index }}">
+<!-- <block wx:if="{{ !item.remove }}"> -->
+        <icon type="{{ item.completed ? 'success' : 'circle' }}"/>
+        <text>{{ item.name }}</text>
+        <icon type="clear" size="16" catchtap="removeTodoHandle" data-index="{{ index }}"/>
+<!-- </block> -->
+      </view>
+    </view>
+    <view class="footer">
+      <text bindtap="toggleAllHandle">Toggle all</text>
+      <text wx:if="{{ leftCount }}">{{ leftCount }} {{ leftCount > 1 ? 'items' : 'item' }} left</text>
+      <text bindtap="clearHandle">Clear completed</text>
+    </view>
+  </block>
+  <view wx:else>
+ <van-notice-bar
+  text="小主(*^▽^*)，生命在于积累，您已经可以开始计划今天的小目标了哟！٩(๑>◡<๑)۶"
+  speed="50"
+  backgroundColor="#5ce5f73a"
+  color="#5ce5f7dc"
+  left-icon="/images/ling.png"
+/>
+
+<view class="blank">
+  
+  您目前还没有任何未完成的任务
+  <view class="blank2">
+  (＾Ｕ＾)ノ~ＹＯ哟
+  </view>
+  <view class="blank2">
+   快点来添加一些任务吧(✪ω✪)
+  </view>
+ 
+</view>
+  </view>
+</view>

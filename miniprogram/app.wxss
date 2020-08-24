@@ -1,0 +1,2 @@
+@import "./assets/weui.wxss";
+@import "./pages/wxParse/wxParse.wxss";

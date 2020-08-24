@@ -1,0 +1,84 @@
+{
+  "pages": [
+    "pages/user/user",
+    "pages/index/index",
+    "pages/md/md",
+    "pages/day/day",
+    "pages/todo/todo",
+    "pages/user/article/article",
+    
+    "pages/user/article-d/article-d",
+    "pages/index/maps/maps",
+    "pages/index/mapt/mapt",
+    "pages/index/mapb/mapb",
+    "pages/index/mapw/mapw",
+    "pages/index/peidui/peidui",
+    "pages/index/qq/qq",
+    "pages/index/xiao/xiao",
+    "pages/index/yun/yun",
+    "pages/index/meng/meng",
+    "pages/index/test/test",
+    "pages/index/wheather/wheather",
+    "pages/user/see/see",
+    "pages/user/log/log"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "what is it ?"
+    }
+  },
+  "plugins": {
+    "routePlan": {
+      "version": "1.0.3",
+      "provider": "wx50b5593e81dd937a"
+    },
+    "subway": {
+      "version": "1.0.4",
+      "provider": "wx6aaf93c4435fa1c1"
+    },
+    "chooseLocation": {
+      "version": "1.0.0",
+      "provider": "wx76a9a06e5b4e693e"
+    }
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "小demo",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "tabBar": {
+    "position": "bottom",
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#000fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "./images/index.png",
+        "text":"首页",
+        "selectedIconPath": "./images/index-2.png"
+      },
+      {
+        "pagePath": "pages/day/day",
+        "iconPath": "./images/day.png",
+        "text": "日记",
+        "selectedIconPath": "./images/day-2.png"
+      },
+      {
+        "pagePath": "pages/todo/todo",
+        "iconPath": "./images/todo.png",
+        "text": "目标",
+        "selectedIconPath": "./images/todo-2.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "./images/people.png",
+        "text": "我的",
+        "selectedIconPath": "./images/people-2.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+/* pages/index/mapt/mapt.wxss *//* pages/index/maps/maps.wxss */
+.btn {
+   
+    display: block;
+    margin: 0 auto;
+width: 184px;
+height: 44px;
+background-color: #fff;
+margin-top: 10px;
+}

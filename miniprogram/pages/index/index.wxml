@@ -1,0 +1,408 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="all">
+    <van-tabs swipeable custom-class="all">
+        <van-tab title="聊天">
+            <view class="a">
+                <!--pages/contact/contact.wxml-->
+
+<view>
+
+  <scroll-view scroll-y scroll-into-view='{{toView}}' style='height: {{scrollHeight}};'>
+    <!-- <view class='scrollMsg'> -->
+    <block wx:key wx:for='{{msgList}}' wx:for-index="index">
+
+      <!-- 单个消息1 客服发出（左） -->
+      <view wx:if='{{item.speaker=="server"}}' id='msg-{{index}}' style='display: flex; padding: 2vw 11vw 2vw 2vw;'>
+        <view style='width: 11vw; height: 11vw;'>
+          <image style='width: 11vw; height: 11vw; border-radius: 10rpx;' src='../../images/chat.png'></image>
+        </view>
+        <view style='width: 4vw; height: 11vw; margin-left: 0.5vw; display: flex; align-items: center; z-index: 9;'>
+          <image style='width: 4vw;' src='../../images/left_msg.png' mode='widthFix'></image>
+        </view>
+        <view class='leftMsg'>{{item.content}}</view>
+      </view>
+
+      <!-- 单个消息2 用户发出（右） -->
+      <view wx:else id='msg-{{index}}' style='display: flex; justify-content: flex-end; padding: 2vw 2vw 2vw 11vw;'>
+        <view class='rightMsg'>{{item.content}}</view>
+        <view style='width: 4vw; height: 11vw; margin-right: 0.5vw; display: flex; align-items: center; z-index: 9;'>
+          <image style='width: 4vw;' src='' mode='widthFix'></image>
+        </view>
+        <view style='width: 11vw; height: 11vw;'>
+          <image style='width: 11vw; height: 11vw; border-radius: 10rpx;' src='{{cusHeadIcon}}'></image>
+        </view>
+      </view>
+
+    </block>
+    <!-- </view> -->
+
+    <!-- 占位 -->
+    <view style='width: 100%; height: 18vw;'></view>
+  </scroll-view>
+
+  <view class='inputRoom' style='bottom: {{inputBottom}}'>
+    <image style='width: 7vw; margin-left: 3.2vw;' src='../../images/pic_icon.png' mode='widthFix'></image>
+    <input bindconfirm='sendClick' adjust-position='{{false}}' value='{{inputVal}}' confirm-type='send' bindfocus='focus' bindblur='blur'></input>
+  </view>
+</view>
+
+            </view>
+        </van-tab>
+        <van-tab title="天气">
+            <view class="b">
+                <view class="container">
+                    <view class="weather-card">
+                        <!-- <view class="today {{weather.today.typeBackgorund}}"> -->
+                        <view class="today {{bgc}} ">
+                            <view class="top">
+                                <view class="range">更新时间：{{common.update.loc}}</view>
+                                <view class="refresh" bindtap="refresh">
+                                    <image src="../../images/refresh.png"></image>
+                                </view>
+                                <text>\n</text>
+                                <text class="top_my">相对湿度：{{common.now.hum}}</text>
+                                <!-- <text>\n</text> -->
+                                <text class="top_my">\t能见度：{{common.now.vis}}/公里</text>
+                            </view>
+                            <block wx:if="{{date>18}}">
+                                <view class="middle">
+                                    <image src="https://cdn.heweather.com/cond_icon/{{common.now.cond_code}}n.png" binderror="imageError"></image>
+                                    <!-- <view wx:if="{{!load}}"> -->
+                                    <image hidden="load" src="https://cdn.heweather.com/cond_icon/{{common.now.cond_code}}.png"></image>
+                                    <!-- </view> -->
+                                    <view class="type-text">
+                                        {{common.now.cond_txt}}，{{common.now.wind_dir}}
+                                    </view>
+                                </view>
+                            </block>
+                            <block wx:else>
+                                <view class="middle">
+                                    <image src="https://cdn.heweather.com/cond_icon/{{common.now.cond_code}}.png"></image>
+                                    <view class="type-text">
+                                        {{common.now.cond_txt}}，{{common.now.wind_dir}}
+                                    </view>
+                                </view>
+                            </block>
+                            <view class="bottom">
+                                <view class="temp">{{common.now.tmp}}°C</view>
+                                <view class="city-day">
+                                    <view class="day">{{week}}</view>
+                                    <view class="city">
+                                        {{common.basic.location}}，{{common.basic.parent_city}}
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="other">
+                            <scroll-view scroll-x="true">
+                                <block wx:if="{{date>999}}">
+                                    <block wx:for="{{will}}" wx:key="*this">
+                                        <view class="scroll-view-item">
+                                            <view class="top aligncenter">{{item.date}}</view>
+                                            <view class="middle aligncenter">
+                                                <image src="https://cdn.heweather.com/cond_icon/{{item.cond_code_n}}n.png" binderror="imageError2"></image>
+                                                <image hidden="load2" src="https://cdn.heweather.com/cond_icon/{{common.now.cond_code}}.png"></image>
+                                                <!-- <block wx:if="{{!load}}">
+                                    <image src="https://cdn.heweather.com/cond_icon/{{item.cond_code_n}}.png"></image>
+                                </block> -->
+                                                <!-- <image src="{{load?"https://cdn.heweather.com/cond_icon/"+{{item.cond_code_n}}+"n.png"+:+"https://cdn.heweather.com/cond_icon/"+{{item.cond_code_n}}+".png"}}></image> -->
+                                            </view>
+                                            <view class="futuretype-text">{{item.cond_txt_n}}</view>
+                                            <view class="bottom aligncenter">
+                                                {{item.tmp_min}}~{{item.tmp_max}}
+                                            </view>
+                                        </view>
+                                    </block>
+                                </block>
+                                <block wx:else>
+                                    <block wx:for="{{will}}" wx:key="*this">
+                                        <view class="scroll-view-item">
+                                            <view class="top aligncenter">{{item.date}}</view>
+                                            <view class="middle aligncenter">
+                                                <image src="https://cdn.heweather.com/cond_icon/{{item.cond_code_n}}.png"></image>
+                                            </view>
+                                            <view class="futuretype-text">{{item.cond_txt_d}}</view>
+                                            <view class="bottom aligncenter">
+                                                {{item.tmp_min}}°C~{{item.tmp_max}}°C
+                                            </view>
+                                        </view>
+                                    </block>
+                                </block>
+                                <view class="scroll-view-item">
+                                    <view class="top aligncenter">今天</view>
+                                    <view class="middle aligncenter">
+                                        <image src="https://cdn.heweather.com/cond_icon/{{will[0].cond_code_n}}.png"></image>
+                                    </view>
+                                    <view class="futuretype-text">{{will[0].cond_txt_d}}</view>
+                                    <view class="bottom aligncenter">{{will[0].tmp_min}}°C~{{will[0].tmp_max}}°C</view>
+                                </view>
+                                <view class="scroll-view-item">
+                                    <view class="top aligncenter">明天</view>
+                                    <view class="middle aligncenter">
+                                        <image src="https://cdn.heweather.com/cond_icon/{{will[1].cond_code_n}}.png"></image>
+                                    </view>
+                                    <view class="futuretype-text">{{will[1].cond_txt_d}}</view>
+                                    <view class="bottom aligncenter">{{will[1].tmp_min}}°C~{{will[1].tmp_max}}°C</view>
+                                </view>
+                                <view class="scroll-view-item">
+                                    <view class="top aligncenter">后天</view>
+                                    <view class="middle aligncenter">
+                                        <image src="https://cdn.heweather.com/cond_icon/{{will[2].cond_code_n}}.png"></image>
+                                    </view>
+                                    <view class="futuretype-text">{{will[2].cond_txt_d}}</view>
+                                    <view class="bottom aligncenter">{{will[2].tmp_min}}°C~{{will[2].tmp_max}}°C</view>
+                                </view>
+                    
+                            </scroll-view>
+                        </view>
+                    </view>
+                </view>
+                <view class="my">
+                    <!-- <block wx:for="{{life}}" wx:key="*this"></block> -->
+                    <view class="page__bd">
+                        <view class="weui-panel weui-panel_access">
+                            <view class="weui-panel__bd">
+                                <view class="weui-media-box weui-media-box_text">
+                                    <h4 class="weui-media-box__title my_life">
+                                        舒适度指数：{{life[0].brf}}
+                                    </h4>
+                                    <view class="weui-media-box__desc">{{life[0].txt}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="page__bd">
+                        <view class="weui-panel weui-panel_access">
+                            <view class="weui-panel__bd">
+                                <view class="weui-media-box weui-media-box_text">
+                                    <h4 class="weui-media-box__title my_life">
+                                        穿衣指数{{life[1].brf}}
+                                    </h4>
+                                    <view class="weui-media-box__desc">{{life[1].txt}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="page__bd">
+                        <view class="weui-panel weui-panel_access">
+                            <view class="weui-panel__bd">
+                                <view class="weui-media-box weui-media-box_text">
+                                    <h4 class="weui-media-box__title my_life">
+                                        感冒指数{{life[2].brf}}
+                                    </h4>
+                                    <view class="weui-media-box__desc">{{life[2].txt}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="page__bd">
+                        <view class="weui-panel weui-panel_access">
+                            <view class="weui-panel__bd">
+                                <view class="weui-media-box weui-media-box_text">
+                                    <h4 class="weui-media-box__title my_life">
+                                        运动指数{{life[3].brf}}
+                                    </h4>
+                                    <view class="weui-media-box__desc">{{life[3].txt}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="page__bd">
+                        <view class="weui-panel weui-panel_access">
+                            <view class="weui-panel__bd">
+                                <view class="weui-media-box weui-media-box_text">
+                                    <h4 class="weui-media-box__title my_life">
+                                        旅游指数{{life[4].brf}}
+                                    </h4>
+                                    <view class="weui-media-box__desc">{{life[4].txt}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="page__bd">
+                        <view class="weui-panel weui-panel_access">
+                            <view class="weui-panel__bd">
+                                <view class="weui-media-box weui-media-box_text">
+                                    <h4 class="weui-media-box__title my_life">
+                                        紫外线指数{{life[5].brf}}
+                                    </h4>
+                                    <view class="weui-media-box__desc">{{life[5].txt}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="page__bd">
+                        <view class="weui-panel weui-panel_access">
+                            <view class="weui-panel__bd">
+                                <view class="weui-media-box weui-media-box_text">
+                                    <h4 class="weui-media-box__title my_life">
+                                        洗车指数{{life[6].brf}}
+                                    </h4>
+                                    <view class="weui-media-box__desc">{{life[6].txt}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="page__bd">
+                        <view class="weui-panel weui-panel_access">
+                            <view class="weui-panel__bd">
+                                <view class="weui-media-box weui-media-box_text">
+                                    <h4 class="weui-media-box__title my_life">
+                                        晾晒指数{{life[7].brf}}
+                                    </h4>
+                                    <view class="weui-media-box__desc">{{life[7].txt}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                
+            </view>
+            <view class="page" data-weui-theme="{{theme}}">
+                    <view class="fadeIn {{hideLoading ? 'fadeOut' : ''}}" wx:if="{{loading}}">
+                        <view class="weui-mask_transparent"></view>
+                        <view class="weui-toast">
+                            <i class="weui-loading weui-icon_toast"></i>
+                            <view class="weui-toast__content">数据更新</view>
+                        </view>
+                    </view>
+                </view>
+        </van-tab>
+        <van-tab title="其他">
+            <view class="b">
+                <van-grid clickable column-num="3">
+                    <van-grid column-num="3" border="{{ false }}">
+                        <van-grid-item use-slot link-type="navigateTo" url="/pages/index/maps/maps">
+                            <image style="width: 20px; height: 20px;" src="../../images/map.png" />
+                            <text>map(墨)</text>
+                        </van-grid-item>
+                        <van-grid-item use-slot link-type="navigateTo" url="/pages/index/mapt/mapt">
+                            <image style="width: 20px; height: 20px;" src="../../images/map2.png" />
+                            <text>map(烟)</text>
+                        </van-grid-item>
+                        <van-grid-item use-slot link-type="navigateTo" url="/pages/index/mapb/mapb">
+                            <image style="width: 20px; height: 20px;" src="../../images/map3.png" />
+                            <text>map(白)</text>
+                        </van-grid-item>
+                        <van-grid-item use-slot link-type="navigateTo" url="/pages/index/peidui/peidui">
+                            <image style="width: 20px; height: 20px;" src="../../images/start1.png" />
+                            <text>星座配对</text>
+                        </van-grid-item>
+                        <van-grid-item use-slot link-type="navigateTo" url="/pages/index/qq/qq">
+                            <image style="width: 20px; height: 20px;" src="../../images/start2.png" />
+                            <text>QQ号查凶吉</text>
+                        </van-grid-item>
+                        <van-grid-item use-slot link-type="navigateTo" url="/pages/index/xiao/xiao">
+                            <image style="width: 20px; height: 20px;" src="../../images/xiao.png" />
+                            <text>笑话大全</text>
+                        </van-grid-item>
+                        <van-grid-item use-slot link-type="navigateTo" url="/pages/index/yun/yun">
+                            <image style="width: 20px; height: 20px;" src="../../images/start3.png" />
+                            <text>星座运势</text>
+                        </van-grid-item>
+                        <van-grid-item use-slot link-type="navigateTo" url="/pages/index/meng/meng">
+                            <image style="width: 20px; height: 20px;" src="../../images/meng.png" />
+                            <text>周公解梦</text>
+                        </van-grid-item>
+                    </van-grid>
+                    <!-- <van-grid-item icon="home-o" link-type="navigateTo" url="/pages/dashboard/index" text="Navigate 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="../../images/day.png" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" />
+                    <van-grid-item icon="search" link-type="reLaunch" url="/pages/dashboard/index" text="ReLaunch 跳转" /> -->
+                </van-grid>
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>
+<!-- <van-grid clickable column-num="2">
+  <van-grid-item
+    icon="home-o"
+    link-type="reLaunch"
+    url="/pages/todo/todo"
+    text="Navigate 跳转"
+  />
+  <van-grid-item
+    icon="search"
+    link-type="reLaunch"
+    url="/pages/todo/todo"
+    text="ReLaunch 跳转"
+  />
+</van-grid> -->
+<!-- <view class="page" data-weui-theme="{{theme}}">
+    <view class="page__hd">
+        <view class="page__title">Grid</view>
+        <view class="page__desc">九宫格</view>
+    </view>
+    <view class="weui-grids">
+        <a class="weui-grid">
+            <view class="weui-grid__icon">
+                <image src="../../images/icon_tabbar.png" alt></image>
+            </view>
+            <view class="weui-grid__label">Grid</view>
+        </a>
+        <a class="weui-grid">
+            <view class="weui-grid__icon">
+                <image src="../../images/icon_tabbar.png" alt></image>
+            </view>
+            <view class="weui-grid__label">Grid</view>
+        </a>
+        <a class="weui-grid">
+            <view class="weui-grid__icon">
+                <image src="../../images/icon_tabbar.png" alt></image>
+            </view>
+            <view class="weui-grid__label">Grid</view>
+        </a>
+        <a class="weui-grid">
+            <view class="weui-grid__icon">
+                <image src="../../images/icon_tabbar.png" alt></image>
+            </view>
+            <view class="weui-grid__label">Grid</view>
+        </a>
+        <a class="weui-grid">
+            <view class="weui-grid__icon">
+                <image src="../../images/icon_tabbar.png" alt></image>
+            </view>
+            <view class="weui-grid__label">Grid</view>
+        </a>
+        <a class="weui-grid">
+            <view class="weui-grid__icon">
+                <image src="../../images/icon_tabbar.png" alt></image>
+            </view>
+            <view class="weui-grid__label">Grid</view>
+        </a>
+        <a class="weui-grid">
+            <view class="weui-grid__icon">
+                <image src="../../images/icon_tabbar.png" alt></image>
+            </view>
+            <view class="weui-grid__label">Grid</view>
+        </a>
+        <a class="weui-grid">
+            <view class="weui-grid__icon">
+                <image src="../../images/icon_tabbar.png" alt></image>
+            </view>
+            <view class="weui-grid__label">Grid</view>
+        </a>
+        <a class="weui-grid">
+            <view class="weui-grid__icon">
+                <image src="../../images/icon_tabbar.png" alt></image>
+            </view>
+            <view class="weui-grid__label">Grid</view>
+        </a>
+    </view>
+</view> -->

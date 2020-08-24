@@ -1,0 +1,152 @@
+<!--pages/index/yun/yun.wxml-->
+<view class="page" data-weui-theme="{{theme}}">
+    <view class="weui-cells__group weui-cells__group_form">
+        <view class="weui-cells">
+            <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                <view class="weui-cell__hd">
+                    <label class="weui-label" style="width: 3em">你的星座</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="bindPicker2Change" range="{{array2}}">
+                        <view class="weui-select">{{array2[value2]}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells__group weui-cells__group_form">
+        <view class="weui-cells">
+            <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                <view class="weui-cell__hd">
+                    <label class="weui-label" style="width: 3em">查询类型</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="bindPicker3Change" range="{{array3}}">
+                        <view class="weui-select">{{array3[value3]}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-form__opr-area">
+        <a class="weui-btn weui-btn_primary" bindtap="yun">查询</a>
+    </view>
+</view>
+<block wx:if="{{module=='today'||module=='tomorrow'}}">
+    <van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;font-size: 18px;">✨运势结果✨</van-divider>
+    <view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd">综合指数</view>
+            <view class="weui-cell__ft">{{result.all}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">今日概述</h4>
+            <view class="weui-media-box__desc my">{{result.summary}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd">幸运色</view>
+            <view class="weui-cell__ft">{{result.color}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd">健康指数</view>
+            <view class="weui-cell__ft">{{result.health}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd">爱情指数</view>
+            <view class="weui-cell__ft">{{result.love}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd">财运指数</view>
+            <view class="weui-cell__ft">{{result.money}}</view>
+        </view>
+         <view class="weui-cell">
+            <view class="weui-cell__bd">幸运数字</view>
+            <view class="weui-cell__ft">{{result.number}}</view>
+        </view>
+         <view class="weui-cell">
+            <view class="weui-cell__bd">速配星座</view>
+            <view class="weui-cell__ft">{{result.QFriend}}</view>
+        </view>
+         <view class="weui-cell">
+            <view class="weui-cell__bd">工作指数</view>
+            <view class="weui-cell__ft">{{result.work}}</view>
+        </view>
+    </view>
+</block>
+
+<block wx:if="{{module=='week'}}">
+    <van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;font-size: 18px;">✨运势结果✨</van-divider>
+    <view>
+        
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">job运势</h4>
+            <view class="weui-media-box__desc my">{{result.job}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">爱情运势</h4>
+            <view class="weui-media-box__desc my">{{result.love}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">财运运势</h4>
+            <view class="weui-media-box__desc my">{{result.money}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">工作运势</h4>
+            <view class="weui-media-box__desc my">{{result.work}}</view>
+        </view>
+       
+    </view>
+</block>
+<block wx:if="{{module=='month'}}">
+    <van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;font-size: 18px;">✨运势结果✨</van-divider>
+    <view>
+        
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">综合运势</h4>
+            <view class="weui-media-box__desc my">{{result.all}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">健康运势</h4>
+            <view class="weui-media-box__desc my">{{result.health}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">爱情运势</h4>
+            <view class="weui-media-box__desc my">{{result.love}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">财运运势</h4>
+            <view class="weui-media-box__desc my">{{result.money}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">工作运势</h4>
+            <view class="weui-media-box__desc my">{{result.work}}</view>
+        </view>
+       
+    </view>
+</block>
+<block wx:if="{{module=='year'}}">
+    <van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;font-size: 18px;">✨运势结果✨</van-divider>
+    <view>
+          <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">年度密码</h4>
+            <view class="weui-media-box__desc my">{{result.mima.info}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">说明</h4>
+            <view class="weui-media-box__desc my">{{result.mima.text}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">事业运</h4>
+            <view class="weui-media-box__desc my">{{result.career}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">感情运</h4>
+            <view class="weui-media-box__desc my">{{result.love}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">财运</h4>
+            <view class="weui-media-box__desc my">{{result.finance}}</view>
+        </view>
+       
+    </view>
+</block>

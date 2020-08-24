@@ -1,0 +1,39 @@
+<!-- pages/index/maps/maps.wxml -->
+    <map id="myMap" style="width: 100%; height: 400px;" latitude="{{location.latitude}}" longitude="{{location.longitude}}" subkey="46LBZ-ZSO6P-GGGD4-VRS35-JJCTQ-ZNF5K" layer-style="style2" markers="{{markers}}" show-location></map>
+
+<view class="btn">
+<van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" bind:click="routeMap">打开手机已下载地图</van-button>
+</view>
+<!-- <view class="btn">
+<van-button color="linear-gradient(to right, #6149f6, #4bb0ff)" bind:click="map">路线规划(墨)</van-button>
+</view> -->
+<view class="btn">
+<van-button color="linear-gradient(to right, #edfa33, #29f7a1)" bind:click="map">路线规划(烟)</van-button>
+</view>
+<view class="btn">
+<van-button color="linear-gradient(to right, #fd2fa0, #edfa33)" bind:click="map2">地铁图</van-button>
+</view>
+<view class="btn">
+<van-button color="linear-gradient(to right, #6149f6, #eb30fc)" bind:click="map3">获取当前位置</van-button>
+</view>
+<block wx:if="{{locationNow.address}}">
+<view class="btn">
+<van-button color="linear-gradient(to right, #29f7a1, #4bb0ff)" bind:click="copyText">复制获取的地址到剪贴板</van-button>
+</view>
+</block>
+<block wx:else></block>
+<view class="btn">
+<van-button color="linear-gradient(to right, #30fcf2, #fc2e2e)" bind:click="mapp1">查看卫星地图</van-button>
+</view>
+<!-- <view class="btn">
+<van-button color="linear-gradient(to right, #6149f6, #4bb0ff)" bind:click="routeMap">打开手机已下载地图</van-button>
+</view> -->
+<view class="page" data-weui-theme="{{theme}}">
+    <view class="fadeIn {{hideLoading ? 'fadeOut' : ''}}" wx:if="{{loading}}">
+        <view class="weui-mask_transparent"></view>
+        <view class="weui-toast">
+            <icon type="download" size="40"/>
+            <view class="weui-toast__content">定位开启才能正常加载地图</view>
+        </view>
+    </view>
+</view>

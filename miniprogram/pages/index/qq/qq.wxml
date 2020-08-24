@@ -1,0 +1,36 @@
+<!-- pages/index/qq/qq.wxml -->
+<van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;font-size: 18px;">
+    qq号码测凶吉
+</van-divider>
+<!-- <view class="page" data-weui-theme="{{theme}}"> -->
+<!-- <view class="weui-form"> -->
+    <!-- <view class="weui-cells__group weui-cells__group_form"> -->
+    <!-- <view class="weui-cells weui-cells_form"> -->
+    <view class="weui-cell weui-cell_active {{isWaring ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+            <label class="weui-label">QQ号</label>
+        </view>
+        <view class="weui-cell__bd weui-flex">
+            <input class="weui-input" type="text" placeholder="输入您的QQ号" placeholder-class="weui-input__placeholder" value="{{value}}" bindinput="onInput" />
+        </view>
+        <!-- </view> -->
+    </view>
+    <!-- </view> -->
+    <view class="weui-form__opr-area">
+        <a class="weui-btn weui-btn_primary" bindtap="qq">确定</a>
+    </view>
+    <!-- </view> -->
+<!-- </view> -->
+<block wx:if="{{result.conclusion}}">
+    <van-divider contentPosition="center" customStyle="color: #1989fa;border-color: #1989fa;font-size: 18px;">这是您的结果，😘亲</van-divider>
+    <view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">QQ号码测试结论</h4>
+            <view class="weui-media-box__desc my">{{result.conclusion}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title">结论分析</h4>
+            <view class="weui-media-box__desc my">{{result.analysis}}</view>
+        </view>
+    </view>
+</block>

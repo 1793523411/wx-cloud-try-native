@@ -1,0 +1,24 @@
+<!-- pages/user/see/see.wxml -->
+<block wx:for="{{user}}">
+    <view class="weui-panel__bd">
+        <a class="weui-media-box weui-media-box_appmsg">
+            <view class="weui-media-box__hd">
+                <image class="weui-media-box__thumb img" src="{{item.avatarUrl}}" alt></image>
+            </view>
+            <view class="weui-media-box__bd">
+                <h4 class="weui-media-box__title">{{item.nickName}}</h4>
+                <view class="weui-media-box__desc"></view>
+            </view>
+        </a>
+    </view>
+  <van-divider ></van-divider>
+</block>
+<view class="page" data-weui-theme="{{theme}}">
+    <view class="fadeIn {{hideLoading ? 'fadeOut' : ''}}" wx:if="{{loading}}">
+        <view class="weui-mask_transparent"></view>
+        <view class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <view class="weui-toast__content">数据加载中</view>
+        </view>
+    </view>
+</view>
